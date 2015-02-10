@@ -1,24 +1,22 @@
 package com.uservoice.uservoicesdk;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import oauth.signpost.OAuthConsumer;
-import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
-
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.uservoice.uservoicesdk.babayaga.Babayaga;
+import com.litl.signpost.okhttp.OkHttpOAuthConsumer;
 import com.uservoice.uservoicesdk.model.AccessToken;
 import com.uservoice.uservoicesdk.model.ClientConfig;
 import com.uservoice.uservoicesdk.model.Forum;
 import com.uservoice.uservoicesdk.model.RequestToken;
 import com.uservoice.uservoicesdk.model.Topic;
 import com.uservoice.uservoicesdk.model.User;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import oauth.signpost.OAuthConsumer;
 
 public class Session {
 
@@ -104,9 +102,9 @@ public class Session {
     public OAuthConsumer getOAuthConsumer() {
         if (oauthConsumer == null) {
             if (getConfig().getKey() != null)
-                oauthConsumer = new CommonsHttpOAuthConsumer(getConfig().getKey(), getConfig().getSecret());
+                oauthConsumer = new OkHttpOAuthConsumer(getConfig().getKey(), getConfig().getSecret());
             else if (clientConfig != null)
-                oauthConsumer = new CommonsHttpOAuthConsumer(clientConfig.getKey(), clientConfig.getSecret());
+                oauthConsumer = new OkHttpOAuthConsumer(clientConfig.getKey(), clientConfig.getSecret());
         }
         return oauthConsumer;
     }
