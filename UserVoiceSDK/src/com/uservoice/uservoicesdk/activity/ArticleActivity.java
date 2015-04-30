@@ -78,15 +78,6 @@ public class ArticleActivity extends SearchActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.uv_action_contact) {
-            startActivity(new Intent(this, ContactActivity.class));
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void finish() {
         // This is what you have to do to make it stop the flash player
         webView.loadData("", "text/html", "utf-8");
