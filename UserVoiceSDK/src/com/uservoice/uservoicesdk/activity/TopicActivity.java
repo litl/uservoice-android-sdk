@@ -120,15 +120,6 @@ public class TopicActivity extends SearchActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.uv_action_contact) {
-            startActivity(new Intent(this, ContactActivity.class));
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("unchecked")
     public PaginatedAdapter<Article> getModelAdapter() {
         return (PaginatedAdapter<Article>) getListAdapter();
